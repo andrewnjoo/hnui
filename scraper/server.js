@@ -9,7 +9,8 @@ app.use(cors());
 
 app.get("/", async (req, res) => {
   try {
-    const stories = await scrapeHackerNews();
+    const { p } = req.query;
+    const stories = await scrapeHackerNews(p);
     res.send(stories);
   } catch (error) {
     res.status(500).send({ error: "Failed to fetch Hacker News data" });

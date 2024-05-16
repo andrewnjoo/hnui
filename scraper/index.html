@@ -15,7 +15,7 @@
         padding: 20px;
       }
       #stories-container {
-        margin-top: 20px;
+        margin-top: 2px;
       }
       .story {
         padding: 1px;
@@ -57,20 +57,25 @@
       <img src="./y18.svg" />
 
       <div id="stories-container"></div>
+
+      <button class="btn btn-primary" style="padding: 1px" id="more-btn">
+        More
+      </button>
     </div>
 
     <script>
       async function fetchStories() {
-        const response = await fetch("http://localhost:3000");
-        const stories = await response.json();
+        const urlParams = new URLSearchParams(window.location.search);
+        let page = urlParams.get("p");
 
+        const response = await fetch(`http://localhost:3000?p=${page}`);
+        const stories = await response.json();
         const storiesContainer = document.getElementById("stories-container");
 
         stories.forEach((story) => {
           const storyElement = document.createElement("div");
           storyElement.classList.add("story");
 
-          // Determine the color class based on points value
           let pointsClass = "";
           if (story.points >= 0 && story.points <= 50) {
             pointsClass = "points-grey";
@@ -82,8 +87,8 @@
 
           storyElement.innerHTML = `
             <span style='width: 80px; display: inline-block'>
-            <span class="comments">${story.comments}</span>
-            <span class="${pointsClass}">${story.points}</span>
+              <span class="comments">${story.comments}</span>
+              <span class="${pointsClass}">${story.points}</span>
             </span>
             <a href="${story.link}" target="_blank">${story.title}</a>
           `;
@@ -91,8 +96,26 @@
           storiesContainer.appendChild(storyElement);
         });
       }
+      document
+        .getElementById("more-btn")
+        .addEventListener("click", async () => {
+          const urlParams = new URLSearchParams(window.location.search);
+          let page = urlParams.get("p");
 
-      fetchStories();
+          if (page) {
+            page = Number(page) + 1;
+          } else {
+            page = 2; // If 'page' parameter doesn't exist, start from page 2
+          }
+
+          urlParams.set("p", page);
+
+          const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+
+          window.location.href = newUrl;
+        });
+
+      fetchStories(); // Initial fetch on page load
     </script>
 
     <!-- Include Bootstrap JS and jQuery from a CDN (for Bootstrap components that require JS) -->
