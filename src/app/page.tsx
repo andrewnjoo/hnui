@@ -1,9 +1,5 @@
-import { Body } from './body';
+import { redirect } from 'next/navigation';
 
 export default async function Home() {
-  return (
-    <main className='flex flex-col sm:p-12'>
-      <Body />
-    </main>
-  );
+  redirect('/1');
 }
