@@ -2,6 +2,8 @@ import React, { Suspense } from 'react';
 import { Story } from '@/app/api/hn/route';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 
+export const dynamic = 'force-dynamic';
+
 const getDomainFromUrl = (url: string) => {
   try {
     const domain = new URL(url).hostname;
