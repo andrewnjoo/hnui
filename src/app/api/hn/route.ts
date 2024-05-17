@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import cheerio from 'cheerio';
 
+export const revalidate = 0;
+
 export type Story = {
   id: string;
   title: string;
