@@ -48,13 +48,7 @@ export default async function Home({ params }: { params: { slug: string } }) {
                         {story.points}
                       </TableCell>
                       <TableCell>
-                        <a
-                          href={story.link}
-                          target='_blank'
-                          rel='noopener noreferrer'
-                        >
-                          {story.title}
-                        </a>
+                        <a href={story.link}>{story.title}</a>
                         <span className='ml-2'>
                           {getDomainFromUrl(story.link)}
                         </span>
