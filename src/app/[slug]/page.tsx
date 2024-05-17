@@ -22,11 +22,6 @@ const getColorClass = (points: number) => {
   }
 };
 
-export const generateStaticParams = async () => {
-  const slugs = Array.from({ length: 11 }, (_, i) => i + 1);
-  return slugs.map((slug) => ({ slug: slug.toString() }));
-};
-
 export default async function Home({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const { data } = await fetch(`${process.env.BASE_URL}/api/hn?p=${slug}`).then(
