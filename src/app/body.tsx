@@ -40,7 +40,7 @@ export const Body = () => {
 
   const nextPage = () => {
     const p = searchParams.get('p');
-    return p ? +p + 1 : 1;
+    return p ? +p + 1 : 2;
   };
 
   return (
@@ -49,33 +49,37 @@ export const Body = () => {
         <div className='lg:w-[800px]'>
           <Table>
             <TableBody>
-              <img src='/y18.svg' alt='y18' className='w-4 h-4 border border-white border-[0.5px]' />
-              {data &&
-                data?.map((story: Story) => (
-                  <TableRow key={story.id}>
-                    <TableCell>{story.comments}</TableCell>
-                    <TableCell className={getColorClass(+story.points)}>
-                      {story.points}
-                    </TableCell>
-                    <TableCell>
-                      <a
-                        href={story.link}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        {story.title}
-                      </a>
-                      <span className='ml-2'>
-                        {getDomainFromUrl(story.link)}
-                      </span>
-                      <span className='ml-2'>{story.timeAgo}</span>
-                    </TableCell>
-                  </TableRow>
-                ))}
+              <img
+                src='/y18.svg'
+                alt='y18'
+                className='w-4 h-4 border border-white border-[0.5px]'
+              />
+              {data.map((story: Story) => (
+                <TableRow key={story.id}>
+                  <TableCell>{story.comments}</TableCell>
+                  <TableCell className={getColorClass(+story.points)}>
+                    {story.points}
+                  </TableCell>
+                  <TableCell>
+                    <a
+                      href={story.link}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      {story.title}
+                    </a>
+                    <span className='ml-2'>{getDomainFromUrl(story.link)}</span>
+                    <span className='ml-2'>{story.timeAgo}</span>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
 
-          <a className='w-8' href={`?p=${nextPage()}`}>
+          <a
+            className='w-8 text-slate-300 text-sm '
+            href={`?p=${nextPage()}`}
+          >
             More
           </a>
         </div>
