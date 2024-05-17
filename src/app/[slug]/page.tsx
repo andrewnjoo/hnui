@@ -2,8 +2,6 @@ import React, { Suspense } from 'react';
 import { Story } from '@/app/api/hn/route';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 
-export const dynamic = 'force-dynamic';
-
 const getDomainFromUrl = (url: string) => {
   try {
     const domain = new URL(url).hostname;
@@ -26,9 +24,9 @@ const getColorClass = (points: number) => {
 
 export default async function Home({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const { data } = await fetch(`${process.env.BASE_URL}/api/hn?p=${slug}`).then(
-    (res) => res.json()
-  );
+  const { data } = await fetch(`${process.env.BASE_URL}/api/hn?p=${slug}`, {
+    cache: 'no-store',
+  }).then((res) => res.json());
 
   return (
     <main className='flex flex-col sm:p-12'>
