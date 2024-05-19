@@ -32,11 +32,13 @@ export default async function Home({ params }: { params: { slug: string } }) {
     <main className='flex flex-col'>
       <Suspense>
         <div className='flex min-h-[80vh] flex-col justify-between p-4 sm:p-8'>
-          <img
-            src='/y18.svg'
-            alt='y18'
-            className='w-4 h-4 border border-white border-[0.5px]'
-          />
+          <a href='/1'>
+            <img
+              src='/y18.svg'
+              alt='y18'
+              className='w-4 h-4 border border-white border-[0.5px]'
+            />
+          </a>
           {data && data?.length > 0 && (
             <div className='lg:w-[800px]'>
               <Table>
