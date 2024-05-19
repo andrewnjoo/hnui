@@ -29,9 +29,9 @@ export default async function Home({ params }: { params: { slug: string } }) {
   }).then((res) => res.json());
 
   return (
-    <main className='flex flex-col sm:p-12'>
+    <main className='flex flex-col'>
       <Suspense>
-        <div className='flex min-h-[80vh] flex-col justify-between p-4'>
+        <div className='flex min-h-[80vh] flex-col justify-between p-4 sm:p-8'>
           <img
             src='/y18.svg'
             alt='y18'
@@ -49,10 +49,12 @@ export default async function Home({ params }: { params: { slug: string } }) {
                       </TableCell>
                       <TableCell>
                         <a href={story.link}>{story.title}</a>
-                        <span className='ml-2'>
+                        <span className='ml-1'>
                           {getDomainFromUrl(story.link)}
                         </span>
-                        <span className='ml-2'>{story.timeAgo}</span>
+                        <span className='ml-1 text-gray-500'>
+                          {story.timeAgo}
+                        </span>
                       </TableCell>
                     </TableRow>
                   ))}

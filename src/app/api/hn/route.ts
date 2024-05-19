@@ -43,6 +43,10 @@ async function scrapeHackerNews(page = 1): Promise<Story[]> {
       comments = '0';
     }
 
+    if (comments.includes('ago')) {
+      comments = '-';
+    }
+
     stories.push({ id, title, link, points, comments, timeAgo });
   });
 
