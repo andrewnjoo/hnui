@@ -45,7 +45,14 @@ export default async function Home({ params }: { params: { slug: string } }) {
                 <TableBody>
                   {data.map((story: Story) => (
                     <TableRow key={story.id}>
-                      <TableCell>{story.comments}</TableCell>
+                      <TableCell>
+                        {/* TODO: link to item?id=... */}
+                        <a
+                          href={`https://news.ycombinator.com/item?id=${story.id}`}
+                        >
+                          {story.comments}
+                        </a>
+                      </TableCell>
                       <TableCell className={getColorClass(+story.points)}>
                         {story.points}
                       </TableCell>
