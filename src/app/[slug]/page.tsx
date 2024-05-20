@@ -51,8 +51,8 @@ export default async function Home({ params }: { params: { slug: string } }) {
                       </TableCell>
                       <TableCell>
                         <a href={story.link}>{story.title}</a>
-                        <span className='ml-1'>
-                          {getDomainFromUrl(story.link)}
+                        <span className='ml-1 text-gray-500'>
+                          ({getDomainFromUrl(story.link)})
                         </span>
                         <span className='ml-1 text-gray-500'>
                           {story.timeAgo}
