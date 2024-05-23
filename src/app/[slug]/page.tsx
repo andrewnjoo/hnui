@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { Story } from '@/app/api/hn/route';
+import { Loading } from '@/components/loading';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 
 const getDomainFromUrl = (url: string) => {
@@ -30,15 +31,15 @@ export default async function Home({ params }: { params: { slug: string } }) {
 
   return (
     <main className='flex flex-col'>
-      <Suspense>
-        <div className='flex min-h-[80vh] flex-col justify-between p-4 sm:p-8'>
-          <a href='/1'>
-            <img
-              src='/y18.svg'
-              alt='y18'
-              className='w-4 h-4 border border-white border-[0.5px]'
-            />
-          </a>
+      <div className='flex min-h-[80vh] flex-col justify-between p-4 sm:p-8'>
+        <a href='/1'>
+          <img
+            src='/y18.svg'
+            alt='y18'
+            className='w-4 h-4 border border-white border-[0.5px]'
+          />
+        </a>
+        <Suspense fallback={<Loading />}>
           {data && data?.length > 0 && (
             <div className='lg:w-[800px]'>
               <Table>
@@ -75,8 +76,8 @@ export default async function Home({ params }: { params: { slug: string } }) {
               </a>
             </div>
           )}
-        </div>
-      </Suspense>
+        </Suspense>
+      </div>
     </main>
   );
 }
