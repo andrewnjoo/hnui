@@ -6,8 +6,8 @@ export default async function Home({ params }: { params: { slug: string } }) {
 
   return (
     <main className='flex flex-col'>
-      <div className='flex min-h-[80vh] flex-col justify-between p-4 sm:p-8'>
-        <a href='/1'>
+      <div className='flex min-h-[80vh] flex-col p-4 sm:p-8'>
+        <a href='/1' className='mb-1'>
           <img
             src='/y18.svg'
             alt='y18'
