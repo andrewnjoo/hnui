@@ -22,7 +22,7 @@ const getColorClass = (points: number) => {
   }
 };
 
-export async function LandingBody({slug}: {slug: string}) {
+export async function LandingBody({ slug }: { slug: string }) {
   const { data } = await fetch(`${process.env.BASE_URL}/api/hn?p=${slug}`, {
     cache: 'no-store',
   }).then((res) => res.json());
@@ -30,7 +30,7 @@ export async function LandingBody({slug}: {slug: string}) {
   return (
     <>
       {data && data?.length > 0 && (
-        <div className='lg:w-[800px]'>
+        <div className='lg:w-[800px] flex flex-col'>
           <Table>
             <TableBody>
               {data.map((story: Story) => (
@@ -58,7 +58,10 @@ export async function LandingBody({slug}: {slug: string}) {
             </TableBody>
           </Table>
 
-          <a className='w-8 text-slate-300 text-sm ' href={`/${+slug + 1}`}>
+          <a
+            className='w-8 text-slate-300 text-sm mt-4 relative'
+            href={`/${+slug + 1}`}
+          >
             More
           </a>
         </div>

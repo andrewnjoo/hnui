@@ -11,7 +11,7 @@ export default async function Home({ params }: { params: { slug: string } }) {
           <img
             src='/y18.svg'
             alt='y18'
-            className='w-4 h-4 border border-white border-[0.5px]'
+            className='w-5 h-5 border border-white border-[0.5px]'
           />
         </a>
         <Suspense
