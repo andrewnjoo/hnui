@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: 'HNUI - Dense Hacker News',
   description:
     'A compressed, dark-mode Hacker News UI with no fluff or comments.',
-  metadataBase: new URL('https://hnui.xyz'),
+  metadataBase: new URL('https://hnui.vercel.app'),
   openGraph: {
     title: 'HNUI - Dense Hacker News',
     description: 'Hacker News, but compressed. No comments, no fluff.',
-    url: 'https://hnui.xyz',
+    url: 'https://hnui.vercel.app',
     siteName: 'HNUI',
     images: [
       {
