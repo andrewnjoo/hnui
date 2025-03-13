@@ -30,4 +30,4 @@ BASE_URL=http://localhost:3000
 ---
 
 Built with **Next.js 14**, **Tailwind CSS**, and **Cheerio**.  
-Designed for dopamine-deprived information goblins 🧠⚡
+Designed for dopamine-deprived information goblins 🧠
